@@ -1,0 +1,76 @@
+Image Optimization Notes:
+
+# Performance
+
+🚨 Amazon calculated that if a page load slows down by 1 second, that could cost $1.6B that year
+
+⚡️ Process:
+client  ↔ server
+- get req to server
+- server res w/ html file
+- browser reads html file
+    - reqs stylesheet
+    - reqs image
+    - reqs script
+
+⚡️ visitors expect site to load in within 2 seconds
+- 50% of visitors will leave if it takes more than 3 seconds
+
+⚡️ 3 Keys to Performance
+🚨 *there are infinite ways to optimize*
+1. number of requests → avg website makes 100 requests
+2. network latency → time per file transfer
+3. backend processing → time to load data from database, assemble xyz
+
+⚡️ 3 Major Keys to Optimization:
+1. Critical Render Path
+2. File Transfer
+3. Backend Tweaks(load balancing, CDN, DB Scaling, GZIP, etc)
+
+🤖 Framework Benefits:
+- Next.js
+    - built in file shrinkage
+    - built in image optimization
+    - folder-based routing
+    - default server side rendering(faster delivery)
+    - removes exif image data for privacy → https://www.verexif.com/en/
+
+⚡️ Network Performance:
+- shrink files
+    - minimize html, css, js(remove spaces)
+        - webpack
+        - minify
+- optimize images
+    - JPG:
+        - big in size
+        - photographs w/ many colors
+        - don’t allow transparency
+    - GIF:
+        - grainy due to reduced color count
+    - PNG:
+        - limit number of colors used
+        - smaller in size than JPG
+        - used as LOGO’s
+        - transparent backgrounds
+    - SVG(Vector Graphics)
+        - image stays sharp no matter how much you expend them
+        - small size
+        - used for retina, 4K display
+        - can customize them with CSS
+        - tend to be simple visuals with a few colors(not complex)
+
+⚡️ Optimizing Images Ourselves:
+🌀 jpeg optimizer → https://jpeg-optimizer.com/
+    13.2MB(too big) → 13.5KB(99% smaller)
+🌀 png optimizer → https://tinypng.com/
+    3.8MB → 1.1MB
+🌀 preview app → allows file size changing
+
+tips:
+If CSS says an image is 500px, resize the image to be 500px
+larger the resolution ⇒ larger file size
+
+⚡️ media queries for different screen sizes
+- at different screen sizes, we can load in different images + other resources
+- a media query that affects a min-width of 900px says all screen sizes that are 900px and bigger, display one layout
+- a media query that affects width 500px, it means display another layout for screen sizes from 0 all the way up to 500px
