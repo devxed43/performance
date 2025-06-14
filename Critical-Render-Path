@@ -1,0 +1,14 @@
+learned about how the critical render path works:
+
+DOM → CSSOM → RENDER TREE → LAYOUT → PAINT → EVENTS → AFFECT RENDER TREE → CREATE NEW LAYOUT → NEW PAINT(RESULT)
+
+Browser reads the html file and creates the Document Object Model
+Browser runs into the css file, reads it and creates the CSS Object Model
+Browser runs into the javascript file, reads it, and creates a Render Tree
+Render tree is a combination of Document Object Model and CSS Object Model
+From here the layout is figured out
+Once layout is figured out
+Website/App paints that blueprint
+Event Listeners, affect the javascript render tree, 
+  a new layout is registered,
+  a new painted website/app is built.
